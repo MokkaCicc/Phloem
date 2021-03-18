@@ -27,12 +27,17 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
 
+    - name: Zip Release Folder
+      run: zip -r Phloem.zip Phloem\bin\Release\netcoreapp3.1
+
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
         name: Development Build
         tag_name: latest
         prerelease: true
-        files: LICENSE
+        files: |
+          Phloem.zip
+          LICENSE
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
