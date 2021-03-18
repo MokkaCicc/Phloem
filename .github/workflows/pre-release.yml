@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     env:
       config: Release
@@ -32,11 +32,8 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
 
-    - name: Move to release Directory
-      run: cdPhloem/bin/Release/
-
     - name: Zip Release Folder
-      run: zip -r phloem.zip netcoreapp3.1/
+      run: Compress-Archive -Path .\Phloem\bin\Release\netcoreapp3.1\ -DestinationPath .\phloem.zip
 
     - name: Release
       uses: softprops/action-gh-release@v1
