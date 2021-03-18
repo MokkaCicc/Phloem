@@ -11,6 +11,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      config: Release
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -22,13 +27,16 @@ jobs:
       run: dotnet restore
 
     - name: Build
-      run: dotnet build --no-restore --configuration Release
+      run: dotnet build --no-restore --configuration $config
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
 
+    - name: Move to release Directory
+      run: cdPhloem/bin/Release/
+
     - name: Zip Release Folder
-      run: zip -r Phloem.zip Phloem/bin/Release/netcoreapp3.1/
+      run: zip -r phloem.zip netcoreapp3.1/
 
     - name: Release
       uses: softprops/action-gh-release@v1
@@ -37,7 +45,7 @@ jobs:
         tag_name: latest
         prerelease: true
         files: |
-          Phloem.zip
+          phloem.zip
           LICENSE
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
