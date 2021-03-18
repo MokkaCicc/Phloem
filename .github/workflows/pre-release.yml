@@ -40,8 +40,6 @@ jobs:
         name: Development Build
         tag_name: latest
         prerelease: true
-        files: |
-          phloem.zip
-          LICENSE
+        files: .\phloem.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
