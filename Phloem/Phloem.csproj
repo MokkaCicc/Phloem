@@ -5,6 +5,6 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>phloem.ico</ApplicationIcon>
-  </PropertyGroup>s
+  </PropertyGroup>
 
 </Project>
