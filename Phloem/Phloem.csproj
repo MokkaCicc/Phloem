@@ -5,6 +5,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>phloem.ico</ApplicationIcon>
+    <LangVersion>9</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
 </Project>
