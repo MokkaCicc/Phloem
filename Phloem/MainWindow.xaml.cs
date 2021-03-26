@@ -17,7 +17,7 @@ namespace Phloem
             InitializeComponent();
             Game game = new();
             StreamWriter sw = new("latest.log");
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 200; i++)
             {
                 var watch = System.Diagnostics.Stopwatch.StartNew();
                 game.FastForward();

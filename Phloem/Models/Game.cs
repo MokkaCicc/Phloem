@@ -9,7 +9,7 @@
         public Game()
         {
             GenerationNumber = 0;
-            FirstGeneration = new Generation(100, 100);
+            FirstGeneration = new Generation(10000, 10000);
             LastGeneration = FirstGeneration;
         }
 
