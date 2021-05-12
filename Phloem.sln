@@ -15,10 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{102F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{23392F1E-DF38-468B-948C-3E8FC06CAE7E}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\pre-release.yml = .github\workflows\pre-release.yml
+		.github\workflows\release.yml = .github\workflows\release.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phloem", "Phloem\Phloem.csproj", "{BFAA1A44-E5A4-4F7D-B685-3DCF8F339ACF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phloem", "Phloem\Phloem.csproj", "{BFAA1A44-E5A4-4F7D-B685-3DCF8F339ACF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

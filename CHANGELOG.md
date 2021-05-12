@@ -1,3 +1,3 @@
-## 0.1.0
+## 1.0.0
 
-Workflow testing, only contains project structure.
+Initial release

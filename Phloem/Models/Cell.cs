@@ -10,14 +10,14 @@
         /// current <see cref="Cell"/> instance.
         /// This field is read-only.
         /// </summary>
-        public readonly ushort PositionX;
+        public readonly int PositionX;
 
         /// <summary>
         /// Gets the position on the <see cref="Generation.Grid"/> Y axis of the
         /// current <see cref="Cell"/> instance.
         /// This field is read-only.
         /// </summary>
-        public readonly ushort PositionY;
+        public readonly int PositionY;
 
         /// <summary>
         /// Gets if the current <see cref="Cell"/> instance is alive.
@@ -32,7 +32,7 @@
         /// <see cref="Generation.Grid"/>.</param>
         /// <param name="positionY">The Y position on the
         /// <see cref="Generation.Grid"/>.</param>
-        public Cell(ushort positionX, ushort positionY)
+        public Cell(int positionX, int positionY)
         {
             PositionX = positionX;
             PositionY = positionY;

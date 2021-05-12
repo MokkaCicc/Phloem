@@ -1,11 +1,51 @@
-﻿<Window x:Class="Phloem.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="Phloem.MainWindow"
         mc:Ignorable="d"
-        Title="Phloem" Height="450" Width="800">
-    <Grid>
+        Title="Phloem" Height="450" Width="800"
+        xmlns:viewmodels="clr-namespace:Phloem.ViewModels">
 
+    <Window.Resources>
+        <viewmodels:CellToColorConverter x:Key="CellToColorConverter"/>
+        <DataTemplate x:Key="DataTemplateForLabel">
+            <Label Background="{Binding Converter={StaticResource CellToColorConverter}}" Height="20" Width="20" BorderThickness="1" BorderBrush="Black"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="DataTemplateForItemInItemsControl">
+            <ItemsControl ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplateForLabel}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <TextBlock Text="Generation n°"/>
+                <TextBlock Text="{Binding GenerationNumber, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                <Button Click="ImportClick" Width="50" Height="30" Margin="3,0,3,0" Content="Import"/>
+                <Button Click="ResetClick" Command="{Binding ResetCommand}" Width="50" Height="30" Margin="3,0,3,0" Content="Reset"/>
+                <Button x:Name="PauseButton" Click="PauseClick" Width="50" Height="30" Margin="3,0,3,0" Content="Play"/>
+                <Button Click="NextClick" Command="{Binding NextCommand}" Width="30" Height="30" Margin="3,0,3,0" Content=">" ToolTip="Jump one generation"/>
+                <Button Click="Next10Click" Command="{Binding Next10Command}" Width="30" Height="30" Margin="3,0,3,0" Content=">>" ToolTip="Jump 10 generations"/>
+            </StackPanel>
+            <Slider x:Name="IntervalSlider" ValueChanged="SliderChanged" Minimum="200" Maximum="1000" Value="500" Margin="0,10,0,0" Width="300" ToolTip="Change generation interval"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,0">
+                <TextBlock Text="{Binding IntervalNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="ms"/>
+            </StackPanel>
+            <ItemsControl ItemTemplate="{DynamicResource DataTemplateForItemInItemsControl}" ItemsSource="{Binding Grid, UpdateSourceTrigger=PropertyChanged}" Margin="10,10,10,10" VerticalAlignment="Top" HorizontalAlignment="Center" >
+
+            </ItemsControl>
+        </StackPanel>
     </Grid>
 </Window>
